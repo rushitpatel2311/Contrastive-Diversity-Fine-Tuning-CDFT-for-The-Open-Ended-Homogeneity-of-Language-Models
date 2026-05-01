@@ -82,7 +82,7 @@ torch
 ## How to Run ?
 
 1. **Open the notebook** in Google Colab:
-   - Upload `CDFT for The Open-Ended Homogeneity of Language Models.ipynb` to [colab.research.google.com](https://colab.research.google.com)
+   - Upload `A00085504.ipynb` to [colab.research.google.com](https://colab.research.google.com)
    - Or open it directly from Google Drive
 
 2. **Enable GPU runtime:**
