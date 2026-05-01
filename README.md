@@ -1,12 +1,6 @@
 # Contrastive-Diversity-Fine-Tuning-CDFT-for-The-Open-Ended-Homogeneity-of-Language-Models
 Contrastive Diversity Fine-Tuning (CDFT) for The Open-Ended Homogeneity of Language Models
 
-# Contrastive Diversity Fine-Tuning (CDFT)
-
-**Student:** Rushitkumar Maheshbhai Patel | **ID:** A00085504  
-**Module:** Deep Learning and Generative AI (CMP030L043)  
-**Assessment:** Part 2 — Project Artefact
-
 ---
 
 ## Overview
@@ -60,22 +54,6 @@ print(dataset[0])
 
 ---
 
-## Project Structure
-
-```
-.
-├── A00085504__1_.ipynb          # Main experiment notebook
-├── cdft_results.json            # Saved evaluation metrics (generated)
-├── cdft_results_summary.csv     # Results table (generated)
-├── fig1_grid_heatmap.png        # Heatmap of grid search (generated)
-├── fig2_diversity_quality_tradeoff.png  # Scatter plot (generated)
-├── fig3_pca_embeddings.png      # PCA of response embeddings (generated)
-├── fig4_training_curves.png     # Training loss curves (generated)
-└── fig5_baseline_vs_best_cdft.png       # Bar chart comparison (generated)
-```
-
----
-
 ## Requirements
 
 ### Hardware
@@ -101,12 +79,10 @@ torch
 
 ---
 
-## How to Run
-
-### Option 1 — Google Colab (Recommended)
+## How to Run ?
 
 1. **Open the notebook** in Google Colab:
-   - Upload `A00085504__1_.ipynb` to [colab.research.google.com](https://colab.research.google.com)
+   - Upload `CDFT for The Open-Ended Homogeneity of Language Models.ipynb` to [colab.research.google.com](https://colab.research.google.com)
    - Or open it directly from Google Drive
 
 2. **Enable GPU runtime:**
@@ -120,71 +96,6 @@ torch
 4. **Run all cells** (`Runtime` → `Run all`) or step through each section manually
 
 ---
-
-### Option 2 — Local Environment
-
-#### Step 1: Clone / download the notebook
-
-```bash
-# Place the notebook in your working directory
-mkdir cdft-project && cd cdft-project
-cp /path/to/A00085504__1_.ipynb .
-```
-
-#### Step 2: Create a virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-```
-
-#### Step 3: Install dependencies
-
-```bash
-pip install --upgrade pip
-pip install transformers>=4.40.0 datasets sentence-transformers accelerate
-pip install matplotlib seaborn scikit-learn pandas numpy tqdm torch
-```
-
-For GPU support (CUDA), install the matching PyTorch build from [pytorch.org](https://pytorch.org/get-started/locally/).
-
-#### Step 4: Set your HuggingFace token
-
-```bash
-export HF_TOKEN=your_token_here      # macOS / Linux
-set HF_TOKEN=your_token_here         # Windows CMD
-```
-
-Or log in via the CLI:
-
-```bash
-huggingface-cli login
-```
-
-#### Step 5: Replace the Colab secret call
-
-In **Section 1** of the notebook, replace:
-
-```python
-from google.colab import userdata
-token = userdata.get('HF_TOKEN')
-login(token=token)
-```
-
-with:
-
-```python
-import os
-from huggingface_hub import login
-login(token=os.environ['HF_TOKEN'])
-```
-
-#### Step 6: Launch Jupyter and run the notebook
-
-```bash
-pip install jupyter
-jupyter notebook A00085504__1_.ipynb
-```
 
 ---
 
@@ -230,50 +141,4 @@ The experiment trains **10 model configurations** in total:
 | **Perplexity** | Evaluated using frozen GPT-2 Large as a fluency proxy | Lower = more fluent ↓ |
 
 ---
-
-## Output Files
-
-After running the full notebook, the following files will be generated in the working directory:
-
-| File | Description |
-|---|---|
-| `cdft_results.json` | All evaluation metrics per configuration |
-| `cdft_results_summary.csv` | Formatted results table |
-| `fig1_grid_heatmap.png` | 3-panel heatmap of grid search results |
-| `fig2_diversity_quality_tradeoff.png` | Diversity vs perplexity scatter plot |
-| `fig3_pca_embeddings.png` | PCA of response embeddings (Baseline vs Best CDFT) |
-| `fig4_training_curves.png` | CE loss and penalty magnitude over training steps |
-| `fig5_baseline_vs_best_cdft.png` | Bar chart comparing Baseline vs best CDFT config |
-
 ---
-
-## Notebook Sections at a Glance
-
-| Section | Description |
-|---|---|
-| **0. Environment Setup** | Install packages, set seeds, detect device |
-| **1. Data Loading** | Load INFINITY-CHAT from HuggingFace, extract 800 prompts |
-| **2. Model Initialisation** | Load GPT-2 Medium + sentence encoder |
-| **3. Dataset Class** | `PromptDataset` — tokenises prompts for causal-LM |
-| **4. CDFT Training Loop** | Implements CE loss + hinge diversity penalty |
-| **5. Evaluation Functions** | Pairwise sim, Distinct-2, perplexity, PCA embeddings |
-| **6. Grid Search** | Trains 10 configurations (1 baseline + 9 CDFT) |
-| **7. Results Table** | Summary DataFrame saved to CSV |
-| **8. Visualisations** | 5 publication-quality figures |
-| **9. Qualitative Examples** | Side-by-side response comparison |
-| **10. Save Artefacts** | Dumps JSON + confirms all files saved |
-
----
-
-## References
-
-- Li, J., et al. (2016). A diversity-promoting objective function for neural conversation models. *NAACL-HLT*.  
-- Jiang, A. Q., et al. (2024). Mixtral of Experts. *arXiv:2401.04088*.  
-- Radford, A., et al. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Blog*.  
-- Reimers, N., & Gurevych, I. (2019). Sentence-BERT. *EMNLP 2019*.
-
----
-
-## License
-
-This project is submitted as academic coursework for **CMP030L043 — Deep Learning and Generative AI**. All rights reserved by the author.
